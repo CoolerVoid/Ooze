@@ -38,19 +38,6 @@ class crud
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
-        public function dbAll($table)
-        {
-
-            $sgdb=$this->conn(1);
- 
-             $sql = " SELECT * FROM $table ";
-
-
-            $this->conn(); 
-            $stmt = $this->db->prepare($sql);
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        }
 
 
         public function rawSelect($sql)
