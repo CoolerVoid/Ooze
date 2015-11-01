@@ -1,6 +1,6 @@
 <?php
 // Ghost template by Cooler_
-// tony.unix@yahoo.com.br
+// coolerlair@gmail.com
 // Mais rapido que o smarty ;)
 class GhostPage {
 	/**
