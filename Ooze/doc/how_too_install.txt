@@ -25,7 +25,7 @@ O:::::::OOO:::::::Oo:::::ooooo:::::o  z::::::zzzzzzzze::::::::e
 About Ooze
 ====================================
 
-  Ooze is a manager of Botnet and Phishing, have a simple web shell and simple Auth and ACL.
+  Ooze is a tool to using at pentest with Social engineering, have a manager of Botnet and Phishing, have a simple web shell and simple Auth and ACL. 
 
 
 
