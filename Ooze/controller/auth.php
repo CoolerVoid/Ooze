@@ -115,7 +115,7 @@ switch ($url) {
                      
 
   Ooze is a manager of Botnet and phishing, have a simple web shell and simple Auth and ACL.
-
+  Version: 1.0
 
   About botnets
 ================
