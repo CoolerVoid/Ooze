@@ -26,7 +26,6 @@ if($url!="auth" && $url != "login") {
          <h1>ERRor! at auth 033</h1> 
          <meta HTTP-EQUIV='refresh' CONTENT='4; URL=../view/login.php'>"; 
 
-    print $_SESSION['userronin']." test ".$_SESSION['passronin']."\n\n<br>"; 
     exit; 
  }
 } 
