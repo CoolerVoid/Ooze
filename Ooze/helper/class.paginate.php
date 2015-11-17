@@ -9,7 +9,7 @@ class paginate {
 
  public function pag($NossoArray,$RegistrosPorPagina,$file, $nameget){ 
   $lista=" ";
-   if (!isset($_GET["$nameget"])) { $PaginaAtual = 1; } else { $PaginaAtual = $_GET["$nameget"]; }
+   if (!isset($_GET["$nameget"])) { $PaginaAtual = 1; } else { $PaginaAtual = htmlentities($_GET["$nameget"]); }
   $TotalDeRegistros = (count($NossoArray) - 1);
   $TotalDePaginas = ceil($TotalDeRegistros/$RegistrosPorPagina);
   $PrimeiroRegistro = (($PaginaAtual * $RegistrosPorPagina) - $RegistrosPorPagina);
@@ -18,7 +18,7 @@ class paginate {
   }
    $currentnumber=0;
   if(isset($_GET["$nameget"])) {
-   $currentnumber=$_GET["$nameget"];
+   $currentnumber=htmlentities($_GET["$nameget"]);
   } 
   $lista.=$this->CriarLinks($TotalDePaginas,$file,$nameget,$currentnumber);
   return $lista;
