@@ -354,7 +354,7 @@ Contact:  coolerlair@gmail.com
         $idedituser=htmlentities($_POST['idedituser']);
         $loginedit=htmlentities($_POST['loginedit']);
         $mailedit=htmlentities($_POST['mailedit']);
-        $passedit=htmlentities(_POST['passedit']);
+        $passedit=htmlentities($_POST['passedit']);
         $owneredit=htmlentities($_POST['owneredit']);
         $secret=$frase.$passedit;
         $gen=new Bcrypt(12);
