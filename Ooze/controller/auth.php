@@ -8,6 +8,7 @@ header('Content-type: text/html; charset="utf-8"',true);
 //secure mitigations
 header('X-Frame-Options: SAMEORIGIN');
 header('X-Content-Type-Options: nosniff');
+header('X-XSS-Protection: 1; mode=block');
 ini_set('session.cookie_httponly',1);
 
 // Compress with gzip 
