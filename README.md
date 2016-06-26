@@ -6,3 +6,5 @@ Ooze is a tool to using at pentest with Social engineering, have a manager of Bo
 
 read docs...
 
+don't use to evil purpose
+
