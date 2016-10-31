@@ -56,7 +56,7 @@ class crud
 
         public function dbInsert($table, $values)
         {
-
+// TODO add bindparam here mitigate possible SQLi
             $this->conn();
             $fieldnames = array_keys($values[0]);
             $size = sizeof($fieldnames);
