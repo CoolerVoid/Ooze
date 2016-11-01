@@ -27,6 +27,7 @@ ini_set('display_errors', 0);
   require "../helper/class.paginate.php";
   require "../helper/class.Bcrypt.php";
   require "../helper/nocsrf.php";
+  require "../helper/secure_validation.php";
 
 //get  page
 $url=$_GET['page'];
@@ -245,10 +246,10 @@ Contact:  coolerlair@gmail.com
       $bcrypt_hashadd=$gen->hash($secret); 
      $values = array(
                  array(
-                  'login'=>"$loginadd", 
-                  'pass'=>"$bcrypt_hashadd", 
-                  'mail'=>"$mailadd", 
-                  'owner'=>"$owneradd",
+                  'login'=> sanitizecmd(sanitize($loginadd)), 
+                  'pass'=> sanitizecmd(sanitize(bcrypt_hashadd)), 
+                  'mail'=> sanitizecmd(sanitize($mailadd)), 
+                  'owner'=> sanitizecmd(sanitize($owneradd)),
                  )
                 );
      $crud->dbInsert('userronin', $values);
@@ -329,11 +330,11 @@ Contact:  coolerlair@gmail.com
         foreach($res as $r) {
          $form = new form();
          $values = array(
-                  'login:text'=>'loginedit:'.$r['login'], 
+                  'login:text'=>'loginedit:'.sanitizecmd(sanitize($r['login'])), 
 		  'token:hidden'=>'csrf_token:'.$token,
-                  'Password:password'=>'passedit:'.$r['pass'],
-                  'E-mail:text'=>'mailedit:'.$r['mail'],
-		  'id:hidden'=>'idedituser:'.$r['id']                               
+                  'Password:password'=>'passedit:'.sanitizecmd(sanitize($r['pass'])),
+                  'E-mail:text'=>'mailedit:'.sanitizecmd(sanitize($r['mail'])),
+		  'id:hidden'=>'idedituser:'.sanitizecmd(sanitize($r['id']))                               
                 );
          $array = array(
                   "admin", 
@@ -352,11 +353,11 @@ Contact:  coolerlair@gmail.com
 
    case "ActionEditUser":
 	test_csrf();
-        $idedituser=htmlentities($_POST['idedituser']);
-        $loginedit=htmlentities($_POST['loginedit']);
-        $mailedit=htmlentities($_POST['mailedit']);
-        $passedit=htmlentities($_POST['passedit']);
-        $owneredit=htmlentities($_POST['owneredit']);
+        $idedituser=sanitizecmd(sanitize(htmlentities($_POST['idedituser']));
+        $loginedit=sanitizecmd(sanitize(htmlentities($_POST['loginedit']));
+        $mailedit=sanitizecmd(sanitize(htmlentities($_POST['mailedit']));
+        $passedit=sanitizecmd(sanitize(htmlentities($_POST['passedit']));
+        $owneredit=sanitizecmd(sanitize(htmlentities($_POST['owneredit']));
         $secret=$frase.$passedit;
         $gen=new Bcrypt(12);
         $bcrypt_hashedit=$gen->hash($secret); 

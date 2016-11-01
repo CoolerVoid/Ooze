@@ -3,6 +3,7 @@
 header('Content-type: text/html; charset="utf-8"',true);
 
 require "../helper/class.crud.php";
+require "../helper/secure_validation.php";
 
 //change this use key of your bot
 $secret_code="testbot";
@@ -18,11 +19,11 @@ if($_POST['secret_code']==$secret_code)
 	$keyboard=htmlentities($_POST['keyboard']);
 	$values = array(
 		array(
-                  'name'=>"$name", 
-                  'date'=>"$date", 
-                  'ip'=>"$ip", 
-                  'system'=>"$system",
-		  'keyboard'=>"$keyboard"
+                  'name'=> sanitizecmd($name), 
+                  'date'=> sanitizecmd($date), 
+                  'ip'=> sanitizecmd($ip), 
+                  'system'=> sanitizecmd(($system),
+		  'keyboard'=> sanitizecmd($keyboard)
                  )
                 );
 	$crud->dbInsert('machine_report', $values);

