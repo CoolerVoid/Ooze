@@ -700,7 +700,7 @@ Contact:  coolerlair@gmail.com
 
      default: 
       $page->titulo="ERRO 404";
-      $page->conteudo="<p class=\"message message-error message-closable\">Have error here <b>\"$url\"</b></p>";
+      $page->conteudo="<p class=\"message message-error message-closable\">Have error here <b></b></p>";
       print $page->display_page();
       break;
 }
