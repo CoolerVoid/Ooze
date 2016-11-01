@@ -15,7 +15,7 @@ ini_set('session.cookie_httponly',1);
 //ob_start("ob_gzhandler");
 
 //if not debug
-//error_reporting(0);
+error_reporting(0);
 //if use debug
 //error_reporting(E_ALL);
 ini_set('display_errors', 1);
