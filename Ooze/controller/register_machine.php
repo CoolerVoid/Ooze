@@ -22,7 +22,7 @@ if($_POST['secret_code']==$secret_code)
                   'name'=> sanitizecmd($name), 
                   'date'=> sanitizecmd($date), 
                   'ip'=> sanitizecmd($ip), 
-                  'system'=> sanitizecmd(($system),
+                  'system'=> sanitizecmd($system),
 		  'keyboard'=> sanitizecmd($keyboard)
                  )
                 );
