@@ -18,7 +18,7 @@ ini_set('session.cookie_httponly',1);
 //error_reporting(0);
 //if use debug
 //error_reporting(E_ALL);
-ini_set('display_errors', 0);
+ini_set('display_errors', 1);
 
 // dá include em todas nossas classes
   require "../helper/class.GhostPage.php";
@@ -353,11 +353,11 @@ Contact:  coolerlair@gmail.com
 
    case "ActionEditUser":
 	test_csrf();
-        $idedituser=sanitizecmd(sanitize(htmlentities($_POST['idedituser']));
-        $loginedit=sanitizecmd(sanitize(htmlentities($_POST['loginedit']));
-        $mailedit=sanitizecmd(sanitize(htmlentities($_POST['mailedit']));
-        $passedit=sanitizecmd(sanitize(htmlentities($_POST['passedit']));
-        $owneredit=sanitizecmd(sanitize(htmlentities($_POST['owneredit']));
+        $idedituser=sanitizecmd(sanitize(htmlentities($_POST['idedituser'])));
+        $loginedit=sanitizecmd(sanitize(htmlentities($_POST['loginedit'])));
+        $mailedit=sanitizecmd(sanitize(htmlentities($_POST['mailedit'])));
+        $passedit=sanitizecmd(sanitize(htmlentities($_POST['passedit'])));
+        $owneredit=sanitizecmd(sanitize(htmlentities($_POST['owneredit'])));
         $secret=$frase.$passedit;
         $gen=new Bcrypt(12);
         $bcrypt_hashedit=$gen->hash($secret); 
