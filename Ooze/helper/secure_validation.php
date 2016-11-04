@@ -11,13 +11,5 @@ function sanitize($input) {
 	return $output;
 }
 
-function sanitizecmd($input) {
- 	if (preg_match('/select|union|delete|insert|version|drop|update|where|[0-9]=[0-9]|%|\/\*|\*\//',strtolower($input))) {
-		echo "don't try SQLi here! ;-) \n";
-		exit(0);	
-	}
-
-	return $input;
-}
 
 ?>
