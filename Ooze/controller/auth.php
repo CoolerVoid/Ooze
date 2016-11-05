@@ -116,7 +116,7 @@ switch ($url) {
       $suporte="<img src=\"../view/imagens/ooze2.png\"><font color=green><pre>
                      
 
-  Ooze is a manager of Botnet and phishing, have a simple web shell and simple Auth and ACL.
+  Ooze is a phishing manager.
   Version: 1.0
 
   About botnets
