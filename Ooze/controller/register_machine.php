@@ -19,11 +19,11 @@ if($_POST['secret_code']==$secret_code)
 	$keyboard=htmlentities($_POST['keyboard']);
 	$values = array(
 		array(
-                  'name'=> sanitizecmd($name), 
-                  'date'=> sanitizecmd($date), 
-                  'ip'=> sanitizecmd($ip), 
-                  'system'=> sanitizecmd($system),
-		  'keyboard'=> sanitizecmd($keyboard)
+                  'name'=> sanitize($name), 
+                  'date'=> sanitize($date), 
+                  'ip'=> sanitize($ip), 
+                  'system'=> sanitize($system),
+		  'keyboard'=> sanitize($keyboard)
                  )
                 );
 	$crud->dbInsert('machine_report', $values);
