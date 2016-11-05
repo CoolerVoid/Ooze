@@ -102,7 +102,7 @@ switch ($url) {
                                 ';
          $var="<p><b>Login:</b>".$r['login']." <br> <b>owner:</b>".$r['owner'];
          $bemvindo="Welcome to Ooze tool</p>";
-         $values = array('last_ip'=>$_SERVER['REMOTE_ADDR']);
+         $values = array('last_ip'=>"???"); //fix it
          $crud->Update('userronin', $values, 'id', $r['id']);
          $page->conteudo=$janela." <br>".$bemvindo."<meta HTTP-EQUIV='refresh' CONTENT='1; URL=auth.php?page=conta'></div></div>";
          print $page->display_page();
