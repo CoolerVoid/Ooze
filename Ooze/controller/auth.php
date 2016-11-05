@@ -167,7 +167,7 @@ Contact:  coolerlair@gmail.com
 				<div class="portlet-content">
                               ';
       $page->titulo="Your acount";
-        $sql='SELECT * FROM userronin WHERE login=\''.$_SESSION['userronin'].'\' ';
+        $sql='SELECT * FROM userronin WHERE login=\''.sanitize($_SESSION['userronin']).'\' ';
        $crud = new crud();
        $res = $crud->rawSelect($sql); 
 
@@ -180,7 +180,6 @@ Contact:  coolerlair@gmail.com
          $dados.="your <b>login</b> \"".$r['login']."\"<br>";
          $dados.="<b>E-mail</b> \"".$r['mail']."\"<br>";
          $dados.="<b>Owner</b> \"".$r['owner']."\"<br>";
-         $dados.="<b> IP:</b> ".$_SERVER['REMOTE_ADDR'];
        }
       $page->conteudo=$janela.$msg.$dados."</div></div>";
       print $page->display_page();
