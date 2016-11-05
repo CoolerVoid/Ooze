@@ -518,52 +518,6 @@ Contact:  coolerlair@gmail.com
       print $page->display_page();
     break;
 
-
-   case "shell":
-        if($_POST['cmd'])
-        {
-	  test_csrf();
-	  $msg="<br><img src=\"../view/imagens/ooze.png\"><font color=green><br>
-                ░░░░░░░░░░░: Ooze Shell CommanD:░░░░░░░░░░░░░░░░░░░</font><br>
-               <br> <font color=orange>'.....'</font>
-               <br>
-               ";
-          $lines=array();
-          exec($_POST['cmd'],$lines);
-          $i=0;
-          $cmd=NULL;
-          foreach($lines as $i) { $cmd.="&nbsp;&nbsp;".$i."<br>"; } 
-          $msg.="<br>&nbsp;&nbsp; ".htmlentities($_POST['cmd'])."<br><font color=green>&nbsp;&nbsp;&nbsp;".$cmd."</font><br>";
-        } 
-        else {
-          $msg="<br><img src=\"../view/imagens/ooze.png\"><font color=green><br>
-                ░░░░░░░░░░░: Ooze Shell CommanD:░░░░░░░░░░░░░░░░░░░</font><br>
-               <br> <font color=orange>'.....'</font>
-               <br>
-               ";
-          $lines=array();
-// first CMD
-          exec('uname -a; df -h; date; id; pwd; ls -l',$lines);
-          $i=0;
-          $cmd=NULL;
-          foreach($lines as $i) { $cmd.="&nbsp;&nbsp;".$i."<br>"; } 
-          $msg.="<br>&nbsp;&nbsp;  uname -a; df -h; date; id; pwd; ls -l"."<br><font color=green> &nbsp;&nbsp;  ".$cmd."</font><br>";
-        }
-        $form = new form();
-	$token = NoCSRF::generate( 'csrf_token' );
-        $values = array(
-		  ':hidden'=>'csrf_token:'.$token,
-                  'CMD:text'=>'cmd:',                              
-                );
-        $action="auth.php?page=shell";
-        $la=$form->StartForm($action);
-        $la.=$form->SimpleForm($values);
-        $la.=$form->ExitForm("Send CMD");
-      
-        $page->conteudo="<div style=\"background-color:black;\">".$msg.$la."</div></div></div>";
-        $page->titulo="Ooze Shell";
-        print $page->display_page();
-        break;
 //////////////////////////////////////////////////////////////
 //////////////////////// e-mail send
    case "AddEmail":
