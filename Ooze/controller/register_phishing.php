@@ -19,10 +19,10 @@ if($_POST['secret_code']==$secret_code)
 
 	$values = array(
 		array(
-                  'name'=>sanitizecmd(sanitize($name)), 
-                  'date'=>sanitizecmd(sanitize($date)), 
-                  'password'=>sanitizecmd(sanitize($password)), 
-                  'url'=>sanitizecmd(sanitize($url))
+                  'name'=>sanitize($name), 
+                  'date'=>sanitize($date), 
+                  'password'=>sanitize($password), 
+                  'url'=>sanitize($url)
                  )
                 );
 	$crud->dbInsert('phishing', $values);
