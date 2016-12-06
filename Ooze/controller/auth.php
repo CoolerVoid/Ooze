@@ -10,6 +10,11 @@ header('X-Frame-Options: SAMEORIGIN');
 header('X-Content-Type-Options: nosniff');
 header('X-XSS-Protection: 1; mode=block');
 ini_set('session.cookie_httponly',1);
+header('Strict-Transport-Security: max-age=7776000');
+ini_set('session.cookie_secure', 1);  
+
+
+
 
 // Compress with gzip 
 //ob_start("ob_gzhandler");
