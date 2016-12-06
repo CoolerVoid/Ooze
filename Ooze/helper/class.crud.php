@@ -56,17 +56,18 @@ class crud
 
         public function dbInsert($table, $values)
         {
-// TODO add bindparam here mitigate possible SQLi
             $this->conn();
-            $fieldnames = array_keys($values[0]);
-            $size = sizeof($fieldnames);
-            $sql = "INSERT INTO $table";
-            $fields = '( ' . implode(' ,', $fieldnames) . ' )';
-            $bound = '(:' . implode(', :', $fieldnames) . ' )';
-            $sql .= $fields.' VALUES '.$bound;
-            $stmt = $this->db->prepare($sql);
-            $stmt->execute($values[0]);
-            
+            $columnString = implode(',', array_keys($values[0]));
+            $valueString = ":".implode(',:', array_keys($values[0]));
+
+            $sql = "INSERT INTO ".$table." (".$columnString.") VALUES (".$valueString.")";
+            $query = $this->db->prepare($sql);
+
+            foreach($values[0] as $key=>$val){
+                 $query->bindValue(':'.$key, $val);
+            }
+
+            $insert = $query->execute();
 
         }
 
